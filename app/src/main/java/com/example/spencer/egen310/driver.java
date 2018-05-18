@@ -148,13 +148,10 @@ public class driver extends AppCompatActivity
             public void onClick(View view)
             {
                 torqueRight--;
-                torqueRightText.setText("Right Torque: " + torqueRight);
+                torqueRightText.setText("Rightt Torque: " + torqueRight);
 
             }
         });
-
-
-
 
     }
 
