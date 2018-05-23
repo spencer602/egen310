@@ -1,6 +1,5 @@
 package com.example.spencer.egen310;
 
-import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.widget.*;
 
 public class driver extends AppCompatActivity
 {
-
     private int torqueLeft;
     private int torqueRight;
     private TextView torqueLeftText;
@@ -26,6 +24,19 @@ public class driver extends AppCompatActivity
 
     Button stop;
 
+    /**
+     * Updates the 'Left Torque' and 'Right Torque' Labels.
+     */
+    protected void updateLabels()
+    {
+        torqueLeftText.setText("Left Torque: " + torqueLeft);
+        torqueRightText.setText("Right Torque: " + torqueRight);
+    }
+
+    /**
+     * initializes the GUI and creates the action listeners
+     * @param savedInstanceState saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +46,9 @@ public class driver extends AppCompatActivity
         runListeners();
     }
 
+    /**
+     * initializes all of the listeners for the buttons
+     */
     protected void runListeners()
     {
         torqueLeftText = findViewById(R.id.torqueLeftText);
@@ -55,104 +69,127 @@ public class driver extends AppCompatActivity
 
         stop.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'stop' button is clicked
+             * @param view current pane
+             */
             public void onClick(View view)
             {
                 torqueRight = 0;
                 torqueLeft = 0;
 
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-                torqueRightText.setText("Right Torque: " + torqueRight);
+                updateLabels();
             }
         });
 
         turnRight.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'turn right' button is pressed
+             * @param view current pane
+             */
             public void onClick(View view)
             {
                 torqueLeft++;
                 torqueRight--;
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-                torqueRightText.setText("Right Torque: " + torqueRight);
+
+                updateLabels();
             }
         });
-
 
         turnLeft.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'turn left' button is clicked
+             * @param view current pane
+             */
             public void onClick(View view)
             {
                 torqueLeft--;
                 torqueRight++;
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-                torqueRightText.setText("Right Torque: " + torqueRight);
+                updateLabels();
             }
         });
 
-
         bothMinus.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'both minus' button is pressed
+             * @param view current pane
+             */
             public void onClick(View view)
             {
                 torqueLeft--;
                 torqueRight--;
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-                torqueRightText.setText("Right Torque: " + torqueRight);
+                updateLabels();
             }
         });
 
-
-
         bothPlus.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'both plus' button is pressed
+             * @param view current pane
+             */
             public void onClick(View view)
             {
                 torqueLeft++;
                 torqueRight++;
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-                torqueRightText.setText("Right Torque: " + torqueRight);
+
+                updateLabels();
             }
         });
 
         leftPlus.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'left plus' button is pressed
+             * @param view  current pane
+             */
             public void onClick(View view)
             {
                 torqueLeft++;
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-
+                updateLabels();
             }
         });
 
         rightPlus.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'right plus' button is pressed
+             * @param view  current pane
+             */
             public void onClick(View view)
             {
                 torqueRight++;
-                torqueRightText.setText("Right Torque: " + torqueRight);
-
+                updateLabels();
             }
         });
 
         leftMinus.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'left minus' button is pressed
+             * @param view  current pane
+             */
             public void onClick(View view)
             {
                 torqueLeft--;
-                torqueLeftText.setText("Left Torque: " + torqueLeft);
-
+                updateLabels();
             }
         });
 
         rightMinus.setOnClickListener(new View.OnClickListener()
         {
+            /**
+             * action to be taken when 'right minus' button is pressed
+             * @param view  current pane
+             */
             public void onClick(View view)
             {
                 torqueRight--;
-                torqueRightText.setText("Rightt Torque: " + torqueRight);
-
+                updateLabels();
             }
         });
-
     }
-
 }
